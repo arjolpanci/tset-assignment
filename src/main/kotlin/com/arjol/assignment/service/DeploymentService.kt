@@ -16,7 +16,7 @@ class DeploymentService (
     @Transactional
     fun deploy(name: String, version: Int): Int {
 
-        // This creates a row so pessimistic locking always works
+        // This creates a row for first deployments so pessimistic locking always works
         if (systemRepo.count() == 0L) {
             systemRepo.save(SystemVersion(0));
         }
